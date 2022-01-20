@@ -34,7 +34,7 @@ public class Main {
             } else {
                 try {
                     Integer.parseInt(creditNumber.substring(0, index).trim());
-                    stringBuilder.append(creditNumber.substring(0, index)).append(" ");
+                    stringBuilder.append(creditNumber, 0, index).append(" ");
                     creditNumber = creditNumber.substring(index).trim();
                 } catch (NumberFormatException ignored) {
                     break;
