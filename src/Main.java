@@ -1,20 +1,21 @@
 import java.util.Scanner;
 
 public class Main {
+    private static final char SPACE = ' ';
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String inputNumber;
-        String checkCardNumber;
+        String CardNumber;
         do {
             System.out.println("####################\n" +
                     "\tВведите номер кредитной карты формата: **** **** **** ****");
             inputNumber = sc.nextLine().trim();
-            checkCardNumber = checkCardNumber(inputNumber);
-        } while (checkCardNumber.length() != 19);
+            CardNumber = checkCardNumber(inputNumber);
+        } while (CardNumber.length() != 19);
 
-        System.out.println("Вы ввели карту с номером: " + checkCardNumber);
+        System.out.println("Вы ввели карту с номером: " + CardNumber);
         System.out.println("\n\tКарта \" " +
-                searchAndReplaceDiamonds(checkCardNumber, "***") +
+                searchAndReplaceDiamonds(CardNumber, "***") +
                 " \" найдена в базе");
 
     }
@@ -23,7 +24,7 @@ public class Main {
         StringBuilder stringBuilder = new StringBuilder();
         int index;
         for (int i = 0; i < 4; i++) {
-            index = creditNumber.indexOf(' ');
+            index = creditNumber.indexOf(SPACE);
             if (i == 3) {
                 if (creditNumber.length() == 4) {
                     index = 4;
@@ -47,7 +48,7 @@ public class Main {
     }
 
     public static String searchAndReplaceDiamonds(String text, String placeholder) {
-        int index = text.lastIndexOf(' ');
+        int index = text.lastIndexOf(SPACE);
         return placeholder + " " + text.substring(index + 1);
     }
 }
