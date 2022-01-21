@@ -4,16 +4,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String inputNumber;
+        String checkCardNumber;
         do {
             System.out.println("####################\n" +
                     "\tВведите номер кредитной карты формата: **** **** **** ****");
             inputNumber = sc.nextLine().trim();
-        } while (checkCardNumber(inputNumber).length() != 19);
+            checkCardNumber = checkCardNumber(inputNumber);
+        } while (checkCardNumber.length() != 19);
 
-        System.out.println("Вы ввели номер карты: " + checkCardNumber(inputNumber));
-        System.out.println("\n\tКарта / " +
-                searchAndReplaceDiamonds(checkCardNumber(inputNumber), "***") +
-                " / найдена в базе");
+        System.out.println("Вы ввели карту с номером: " + checkCardNumber);
+        System.out.println("\n\tКарта \" " +
+                searchAndReplaceDiamonds(checkCardNumber, "***") +
+                " \" найдена в базе");
 
     }
 
